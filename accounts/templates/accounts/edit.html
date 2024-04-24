@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수정</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .board_wrap {
+            width: 1000px;
+            margin: 100px auto;
+        }
+
+        .board_title {
+            margin-bottom: 30px;
+        }
+
+        .board_title strong {
+            font-size: 3rem;
+        }
+        
+        .board_title p {
+            margin-top: 5px;
+            font-size: 1.4rem;
+        }
+
+        .bt_wrap {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0;
+        }
+
+        .bt_wrap a {
+            display: inline-block;
+            min-width: 80px;
+            margin-left: 10px;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 2px;
+            font-size: 1.4rem;
+        }
+
+        .bt_wrap a:first-child {
+            margin-left: 0;
+        }
+
+        .bt_wrap a.on {
+            background: #000;
+            color: #fff;
+        }
+
+        .board_write {
+            border-top: 2px solid #000;
+        }
+
+        .board_write .title,
+        .board_write .info {
+            padding: 15px;
+        }
+
+        .board_write .info {
+            border-top: 1px dashed #ddd;
+            border-bottom: 1px solid #000;
+            font-size: 0;
+        }
+
+        .board_write .title dl {
+            font-size: 0;
+        }
+
+        .board_write .info dl {
+            display: inline-block;
+            width: 50%;
+            vertical-align: middle;
+        }
+
+        .board_write .title dt,
+        .board_write .title dd,
+        .board_write .info dt,
+        .board_write .info dd {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 1.4rem;
+        }
+
+        .board_write .title dt,
+        .board_write .info dt {
+            width: 100px;
+        }
+
+        .board_write .title dd {
+            width: calc(100% - 100px);
+        }
+
+        .board_write .title input[type="text"],
+        .board_write .info input[type="text"],
+        .board_write .info input[type="password"] {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .board_write .title input[type="text"] {
+            width: 80%;
+        }
+
+        .board_write .cont {
+            border-bottom: 1px solid #000;
+        }
+
+        .board_write .cont textarea {
+            display: block;
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 0;
+            resize: vertical;
+        }
+
+        @media (max-width: 1000px) {
+            .board_wrap {
+                width: 100%;
+                min-width: 320px;
+                padding: 0 30px;
+                box-sizing: border-box;
+            }
+
+            .board_list .num,
+            .board_list .writer,
+            .board_list .count {
+                display: none;
+            }
+
+            .board_list .date {
+                width: 40%;
+            }
+
+            .board_list .title {
+                text-indent: 10px;
+            }
+
+            .board_list .top .title {
+                text-indent: 0;
+            }
+
+            .board_page a {
+                width: 26px;
+                height: 26px;
+            }
+
+            .board_page a.bt {
+                padding-top: 7px;
+            }
+            
+            .board_page a.num {
+                padding-top: 6px;
+            }
+
+            .board_view .info dl {
+                width: 50%;
+                padding: 0;
+            }
+
+            .board_view .info dl:nth-child(-n+2) {
+                margin-bottom: 5px;
+            }
+
+            .board_view .info dl::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>수정</strong>
+            <p>글을 수정하세요.</p>
+        </div>
+        <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                    <dl>
+                        <dt>제목</dt>
+                        <dd><input type="text" placeholder="제목 입력" value=""></dd>
+                    </dl>
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd><input type="text" placeholder="글쓴이 입력" value=""></dd>
+                    </dl>
+                    <dl>
+                        <dt>비밀번호</dt>
+                        <dd><input type="password" placeholder="비밀번호 입력" value=""></dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    <textarea placeholder="내용 입력"></textarea>
+                </div>
+            </div>
+            <div class="bt_wrap">
+                <a href="view.html" class="on">수정</a>
+                <a href="{% url 'accounts:view' %}">취소</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPS_HOME</title>
+    <!-- Bootstrap Icons CDN 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <style>
+        body, html {
+            margin:0;
+            padding:0;
+            background-color: rgb(228, 248, 240);
+        }
+        header{
+            margin:5% 10%;
+        }
+        .header-items{
+            display:flex;
+            justify-content:space-between;
+            gap:10px;
+        }
+        .header-items i{
+            color: black;
+            font-size:20px;
+        }
+        .header-items a {
+            padding:5px;
+            color:grey;
+            text-decoration:none;
+        }
+        .header-items a:hover{
+            text-decoration:underline;
+        }
+        .header-box {
+            padding:5% 10%;
+            border:1.5px solid rgb(168, 233, 198);
+            border-radius:20px;
+            background-color:rgb(168, 233, 198);
+            text-align:left;
+            font-size:20px;
+        }
+
+        
+        .container {
+            display: flex;
+            justify-content:center;
+            gap:10px;
+        }
+        /* 각 상자들의 스타일 */
+        .box {
+            width: 400px;
+            height: 400px;
+            display:grid;
+            grid-template-rows: 1fr 1fr; /* 두 개의 행으로 구성 */
+            grid-template-columns: 1fr; /* 한 개의 열로 구성 */
+            justify-items:center;
+            align-items:center; /* 수평 가운데 */
+            text-align:center; /* 수직 가운데 */
+        }   
+        /* 중첩된 상자 스타일 */
+        .text-box1 {
+            width: 350px;
+            height: 100px;
+            margin: 5px;
+            text-align:left;
+            font-size:20px;
+        }
+        .text-box2{
+            width: 350px;
+            height: 100px;
+            margin: 5px;
+            border: 1.5px solid rgb(168, 233, 198);
+            border-radius:20px;
+            background-color:rgb(168, 233, 198);
+        }
+
+        .menu {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        } 
+        .inner-box{
+            width: 100px;
+            height: 100px;
+            border: 1.5px solid rgb(168, 233, 198);
+            border-radius:20px;
+            background-color:rgb(168, 233, 198);
+            display:flex;
+            flex-wrap:wrap;
+            margin: 5px;
+        }
+        /* 박스 내 아이콘 스타일 */
+        .inner-box i {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color:black;
+        }
+        /* 박스 내 텍스트 스타일 */
+        .inner-box div {
+            font-size: 18px;
+            color: black;
+            text-decoration: none;
+            display:block;
+        }
+        /* 박스 호버 시 스타일 */
+        .inner-box:hover {
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-items">
+            <div class="gps">
+                <i class="bi bi-recycle">GPS</i>
+            </div>
+            <div class="log">
+                <a href="{% url 'accounts:login' %}">로그인</a>
+                <a href="{% url 'accounts:signup' %}">회원가입</a>
+            </div>
+        </div>
+        <div class="header-box">
+            <div>함께 더하는 미래</div>
+            <div>같이 나누는 강서</div>
+        </div>
+        </div>
+    </header>
+
+    <container>
+        <div class="container">
+            <!-- 첫번째 상자 -->
+            <div class="box">
+                <!-- 첫번째 상자 안의 내부 상자 2개 -->
+                <div class="text-box1">
+                    <div>올바른 분리배출,</div>
+                    <div>우리의 지구를 지키는</div>
+                    <div>작은 실천입니다.</div>
+                </div>
+                <div class="text-box2">
+                    <div>빠르고 간편한</div>
+                    <div>민원상담 바로가기</div>
+                    <a href='https://eminwon.gangseo.seoul.kr/'></a>
+                </div>
+            </div>
+    
+            <!-- 두번째 상자 -->
+            <div class="menu">
+                <!-- 두번째 상자 안의 내부 상자 4개 -->
+                <div class="inner-box">
+                    <a href="{% url 'accounts:list'%}" class="box1">
+                        <i class="bi bi-megaphone"></i>
+                        <div>강서 소식</div>
+                    </a>
+                </div>
+                <div class="inner-box">
+                    <a href="{% url 'accounts:guide'%}" class="box2">
+                        <i class="bi bi-trash"></i>
+                        <div>분리배출 가이드</div>
+                    </a>
+                </div>
+                <div class="inner-box">
+                    <a href="{% url 'accounts:trash'%}" class="box3">
+                        <i class="bi bi-calendar-week"></i>
+                        <div>우리동네 쓰레기 버리는 날</div>
+                    </a>
+                </div>
+                <div class="inner-box">
+                    <a href="{% url 'accounts:mypage'%}" class="box4">
+                        <i class="bi bi-person"></i>
+                        <div>마이페이지</div>
+                    </a>
+                </div>
+                <div class="inner-box">
+                    <i class="bi bi-telephone"></i>
+                    <div>문의전화</div>
+                    <div>02-2660-6114</div>
+                </div>
+            </div>
+    
+            <!-- 세번째 상자 
+            <div class="box">
+                # 세번째 상자 안의 내부 상자 1개
+                <div class="inner-box">1</div>
+                    <div>문의전화</div>
+                    <div>02-2660-6114</div>
+            </div> -->
+    </container>
+</body>
+</html>

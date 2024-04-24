@@ -1,0 +1,23 @@
+<!-- accounts/index.html -->
+{% extends "accounts/base.html" %}
+{% block content %}
+<h1>회원정보 페이지</h1>
+<hr>
+{% if user.is_authenticated %}
+<h2>{{ user.username }}</h2>
+<form action="{% url "accounts:update" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="회원정보 수정하기">
+</form><br>
+<form action="{% url "accounts:logout" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="로그아웃하기">
+</form><br>
+<form action="{% url "accounts:delete" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="회원탈퇴하기">
+</form>
+{% else %}
+    <h2>로그인 후 이용해주세요.</h2>
+{% endif %}
+{% endblock content %}
