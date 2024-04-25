@@ -4,9 +4,9 @@
 <h1>회원정보 페이지</h1>
 <hr>
 <h2>{{ user.username }}</h2>
-<form action="{% url "accounts:update" %}" method="POST">
+<form action="{% url "accounts:update" accountt.pk %}" method="POST">
     {% csrf_token %}
-    {{ form.as_p}}
+    {{ form.as_p }}
     <input type="submit" value="수정하기">
 </form>
 {% endblock content %}

@@ -1,10 +1,132 @@
 {% extends "accounts/base.html" %}
-{% block content %}
-    <form action= "{% url 'accounts:login' %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="로그인하기">
-    </form>
-{% endblock content %}
 
+{% block content %}
+<style>
+    body {
+        margin: auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+    }
+
+    nav {
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    nav a {
+        display: inline-block;
+        color: rgb(91, 90, 90);
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    nav a:hover {
+        background-color: #E7EEEE;
+        color: rgb(65, 64, 64);
+    }
+    nav a + a {
+        margin-left: 40px; /*메뉴바 사이 간격*/
+    }
+    .container {
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+
+    .top-section {
+        background-color: rgb(255,255,255); /* 첫 번째 색상 */
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .bottom-section {
+        background-color: rgb(228,248,240) ; /* 두 번째 색상 */
+        height: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+    
+
+    .title {
+        text-align:center;
+      }
+      .login-form {
+        width: 500px;
+        height: 350px;
+        margin: 400px auto 0;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .login-form .form-field {
+        margin-bottom: 20px; /* 간격을 더 넓게 조정 */
+      }
+      
+      .login-form input[type="text"],
+      .login-form input[type="password"] {
+        width: 400px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      .login-form button {
+        width: 100%; /* 버튼 너비 수정 */
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        justify-content: center; /* 수정된 부분 */
+      }
+      
+      .login-form button:hover {
+        background-color: #45a049;
+      }
+      
+</style>
+{% comment %} <h1 class="title">로그인</h1> {% endcomment %}
+<div class="container">
+    <nav>
+        <a href="{% url 'accounts:home' %}">메인화면</a>
+        <a href="{% url 'accounts:list' %}">강서소식</a>
+        <a href="{% url 'accounts:guide' %}">분리배출 가이드</a>
+        <a href="{% url 'accounts:trash' %}">쓰레기 수거 정보</a>
+        <a href="{% url 'accounts:mypage' %}">마이페이지</a>
+    </nav>
+</div>
+
+<div class="top-section">
+    <div class="login-form">
+        <h2>로그인</h2>
+        <form action="{% url 'accounts:login' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">로그인하기</button>
+        </form>
+    </div>
+</div>
+<div class="bottom-section"></div>
+{% endblock content %}
 

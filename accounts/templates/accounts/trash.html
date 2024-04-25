@@ -1,0 +1,251 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+    <title>쓰레기 수거 정보</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color:rgb(228, 248, 240);
+    margin:auto;
+  }
+  .container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+  }
+  .title {
+    background-color: blue; /* 색상 코드는 실제 원하는 색상에 맞게 조정하세요 */
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  nav {
+      overflow: hidden;
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+      background-color: #8EC4B0;
+  }
+  nav a {
+      display: inline-block;
+      color: rgb(91, 90, 90);
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-weight: bold;
+  }
+  nav a:hover {
+      background-color: #E7EEEE;
+      color: rgb(65, 64, 64);
+  }
+  nav a + a {
+  margin-left: 40px; /*메뉴바 사이 간격*/
+  }
+  .container {
+      margin: 0 auto;
+      max-width: 800px;
+  }
+  .table1 {
+    width: 70%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    margin: 0 auto; /*표 가운데 배치*/
+  }
+  .table2 {
+    width: 70%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    margin: 0 auto; /*표 가운데 배치*/
+  }
+  .table3 {
+    width: 70%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    margin: 0 auto; /*표 가운데 배치*/
+  }
+  .table4 {
+    width: 80%;
+    margin-top: 40px;
+    border-collapse: collapse;
+    margin: 0 auto; /*표 가운데 배치*/
+  }
+  table, th, td {
+    border: 1px solid #B7B2B2;
+  }
+  .table4 td, th {
+    height: 50px
+  }
+  th {
+    text-align: center;
+    padding: 8px;
+  }
+  .table1 th {
+  background-color: rgb(144, 206, 197);
+}
+  .table2 th {
+  background-color: rgb(127, 172, 197);
+}
+  .table3 th {
+  background-color: rgb(231, 200, 123);
+}
+  .table4 th {
+  background-color: rgba(128, 128, 129, 0.531);
+}
+  td {
+    text-align: center;
+    height: 150px;
+    padding-left: 30px; /* 왼쪽 여백 조절 */
+    padding-right: 30px; /* 오른쪽 여백 조절 */
+  }
+  .note {
+    font-size: 0.8em;
+    margin-top: 20px;
+  }
+  .highlight {
+    background-color: #F2F2F2;
+  }
+  h2 {
+            font-size: 17px;
+            margin-left: 213px; /*텍스트 위치 조절*/
+            color: rgb(8, 170, 148);
+            margin-top: 100px;
+            margin-bottom: 15px;
+        }
+  p {
+            font-size: 14px;
+            margin-left: 215px;
+            margin-top: -5px;
+            margin-bottom: 5px;
+        }
+  h3 {
+            font-size: 17px;
+            margin-left: 213px;
+            color: rgb(16, 129, 194);
+            margin-top: 50px; /* 헤딩과 테이블 사이의 간격 조절 */
+            margin-bottom: 20px;
+        }
+  h4 {
+            font-size: 17px;
+            margin-left: 213px;
+            color: rgb(219, 159, 7);
+            margin-top: 50px; /* 헤딩과 테이블 사이의 간격 조절 */
+            margin-bottom: 20px;
+        }
+  h5 {
+            font-size: 17px;
+            margin-left: 150px; /*텍스트 위치 조절*/
+            color: rgb(82, 85, 85);
+            margin-top: 100px;
+            margin-bottom: 20px;
+        }
+</style>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'accounts:home'%}">메인화면</a>
+    <a href="{% url 'accounts:list'%}">강서소식</a>
+    <a href="{% url 'accounts:guide'%}">분리배출 가이드</a>
+    <a href="{% url 'accounts:trash'%}">쓰레기 수거 정보</a>
+    <a href="{% url 'accounts:mypage'%}">마이페이지</a>
+  </nav>
+    <h2>생활쓰레기 배출시간 및 장소</h2>
+    <p>・배출시간:19:00 ~ 24:00까지</p>
+    <p>・배출요일:내집 앞, 내 점포 앞</p>
+  <table class="table1">
+    <tr>
+      <th>월, 수, 금</th>
+      <th>화, 목, 일</th>
+    </tr>
+    <tr>
+      <td>화곡2동, 화곡3동, 화곡4동<br>
+          화곡6동, 화곡8동, 우장산동<br>
+          발산1동(마곡동지역, 수명산파크 제외)<br>
+          등촌1동, 등촌3동, 공항동<br>
+          가양2동, 방화1동
+      </td>
+      <td>화곡1동, 화곡본동, 가양1동<br>
+          가양3동, 발산1동<br>
+          (마곡동지역, 수명산파크 제외)<br>
+          염창동, 등촌2동, 방화2동, 방화3동<br>
+      </td>
+    </tr>
+  </table>
+  <h3>재활용품 배출시간 및 장소</h3>
+    <p>・배출시간:배출요일 일몰 후 24시까지</p>
+    <p>・배출요일:내집 앞, 내 점포 앞</p>
+    <table class="table2">
+      <tr>
+        <th>월, 수, 금</th>
+        <th>화, 목, 일</th>
+      </tr>
+      <tr>
+        <td>등촌1・3동, 화곡2・3・4・6・8동<br>
+            우장산동, 공항동, 가양2동<br>
+            방화1동, 발산1동<br>
+            (마곡동, 수명산파크 제외)
+        </td>
+        <td>염창동, 등촌2동, 화곡본동<br>
+            화곡1동, 가양1・3동<br>
+            방화2・3동, 발산1동<br>
+            (마곡동, 수명산파크 전체)
+        </td>
+      </tr>
+    </table>
+    <h4>음식물 쓰레기 배출시간 및 장소</h4>
+      <P>・배출시간:각 동 지정요일 19시~24시까지</P>
+      <p>・배출장소:내집 앞, 내 점포 앞</p>
+    <table class="table3">
+      <tr>
+        <th>월, 수, 금</th>
+        <th>화, 목, 일</th>
+      </tr>
+      <tr>
+        <td>화곡2・3・4・6・8동<br>
+            등촌1・3동, 공항동<br>
+            가양2동, 방화1동<br>
+            발산1동<br>
+            (마곡동지역, 수명산파크 제외)
+        </td>
+        <td>화곡1동, 화곡본동, 염창동<br>
+            가양1・3동, 염창동, 등촌2동<br>
+            방화2・3동, 발산1동<br>
+            (마곡동지역, 수명산파크 전체)
+        </td>
+      </tr>
+    </table>
+    <h5>쓰레기 미수거시 문의처(행정동별)</h5>
+    <table class="table4">
+      <tr>
+        <th>대상동</th>
+        <th>담당업체</th>
+        <th>연락처</th>
+      </tr>
+      <tr>
+        <td>화곡1・2・4・8동</td>
+        <td>강서산업</td>
+        <td>02-2604-6215</td>
+      </tr>
+      <tr>
+        <td>화곡본동, 화곡6동, 가양3동, 우장산동</td>
+        <td>신진이에스</td>
+        <td>02.2663.6000</td>
+      </tr>
+      <tr>
+        <td>화곡3동, 발산1동(마곡동지역, 수명산파크 제외)<br>
+            가양1동, 발산1동(마곡동지역, 수명산파크 전체)</td>
+        <td>경청환경</td>
+        <td>02-3661-6182</td>
+      </tr>
+      <tr>
+        <td>등촌1・2・3동, 공항동, 염창동</td>
+        <td>신원그린</td>
+        <td>02-2659-1470</td>
+      </tr>
+      <tr>
+        <td>가양2동, 방화1・2・3동 </td>
+        <td>청해물산</td>
+        <td>02-3663-6220</td>
+      </tr>
+    </table>
+</html>
+{% endblock content %}

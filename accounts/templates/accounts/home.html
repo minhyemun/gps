@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>GPS_HOME</title>
+{% extends "accounts/base.html" %}
+
+{% block content %}
     <!-- Bootstrap Icons CDN 추가 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <style>
@@ -32,20 +30,47 @@
             text-decoration:underline;
         }
         .header-box {
-            padding:5% 10%;
+            padding:10% 10%;
             border:1.5px solid rgb(168, 233, 198);
             border-radius:20px;
             background-color:rgb(168, 233, 198);
-            text-align:left;
-            font-size:20px;
+            font-size:27px;
+            position: relative;
         }
+        .header-box div {
+         font-weight: bold; 
+         padding-left: 80px;
+         
+         }
+         .header-box, .box, .menu {
+         /* width: 90vw;  Adjust based on your preference */
+            }
 
-        
-        .container {
+        {% comment %} .container {
             display: flex;
             justify-content:center;
             gap:10px;
-        }
+        } {% endcomment %}
+        @media (max-width: 1200px) {
+            .header-box, .box, .menu {
+               /* width: 100%;  Ensures full width at smaller screens */
+            }
+            .container {
+                flex-direction: column; /* Stacks the containers on smaller screens */
+            }
+            .inner-box {
+                width: 90%; /* Adjust inner boxes to be responsive */
+                margin: 10px auto; /* Centering the boxes */
+                }
+            }
+
+        .container {
+            max-width: 1200px; /* Maximum width */
+            margin: 0 auto; /* Centering the container */
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            }
         /* 각 상자들의 스타일 */
         .box {
             width: 400px;
@@ -66,13 +91,30 @@
             font-size:20px;
         }
         .text-box2{
-            width: 350px;
-            height: 100px;
-            margin: 5px;
-            border: 1.5px solid rgb(168, 233, 198);
+            width: 330px;
+            height: 150px;
+            margin: 10px;
+            position: relative;
+            
             border-radius:20px;
-            background-color:rgb(168, 233, 198);
+            background-color:rgb(96, 178, 229);
+            left: -80px;
+            top: -20px; 
         }
+        .text-box2 div {
+            position: relative; /* 상대적인 위치 설정 */
+            top: 50px; /* 원하는 만큼의 값으로 조절 */
+            left: -75px;
+            }
+
+        .text-box2 div:first-child {
+            color: white;
+        }
+
+        .text-box2 div:last-child {
+            color: black; 
+        }
+
 
         .menu {
             width: 400px;
@@ -83,51 +125,228 @@
             font-size: 18px;
         } 
         .inner-box{
-            width: 100px;
-            height: 100px;
-            border: 1.5px solid rgb(168, 233, 198);
+            width: 500px;
+            height: 150px;
             border-radius:20px;
             background-color:rgb(168, 233, 198);
             display:flex;
             flex-wrap:wrap;
             margin: 5px;
         }
+
         /* 박스 내 아이콘 스타일 */
         .inner-box i {
-            font-size: 30px;
-            margin-bottom: 10px;
-            color:black;
-        }
-        /* 박스 내 텍스트 스타일 */
-        .inner-box div {
-            font-size: 18px;
-            color: black;
-            text-decoration: none;
-            display:block;
+            position: relative;
+            font-size: 40px;
+            top: 40px; 
+            left: 70px; 
+            color: white;
+            
         }
         /* 박스 호버 시 스타일 */
         .inner-box:hover {
             background-color: black;
         }
+        .inner-box:nth-child(1) { /* box1에 해당하는 요소에 대한 선택자 */
+        margin-top: -200px;
+        margin-right: -330px;
+        background-color: rgb(55, 154, 216);
+        border-top-left-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+        }
+        
+        .inner-box:nth-child(2) {
+        margin-top: -150px; 
+        margin-left: 350px;
+        background-color: rgb(42, 178, 144);
+        border-top-left-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+        }
+        .inner-box:nth-child(3) {
 
+        margin-top: 160px; 
+        margin-left: -395px;
+        background-color: rgb(109, 198, 170);
+        border-top-left-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+        }
+        .inner-box:nth-child(4) {
+
+        margin-top: 200px; 
+        margin-left: 15px;
+        background-color: rgb(103, 204, 244);
+        border-top-left-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+        
+        }
+        .header-box img {
+        position: absolute;
+        top: -3px;
+        left: 700px;
+        width: 500px; 
+        height: 300px; 
+        display:flex;
+        }
+
+        .box1, .box2, .box3, .box4 {
+            position: relative; /* Containing context for absolute positioned children */
+            text-decoration:none;
+        }
+        .box1 div, .box2 div, .box3 div, .box4 div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index:2;
+        }
+     
+        body, html {
+            width: 100%;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+        }
+        .container, header {
+            width: 1200px; /* Fixed width */
+            margin: auto; /* Centering */
+        }
+        .box1 div {
+        color: white; 
+        font-weight: bold; 
+        position: absolute; 
+        top: 600px; 
+        left: 815px; 
+        transform: translate(-50%, -50%); /* 요소를 정확히 가운데로 이동 */
+        }
+        .box2 div {
+        color: white; 
+        font-weight: bold; 
+        position: absolute; 
+        top: 625px; 
+        left: 1020px; 
+        transform: translate(-50%, -50%); /* 요소를 정확히 가운데로 이동 */
+        }
+        .box3 div {
+        color: white; 
+        font-weight: bold; 
+        position: absolute; 
+        top: 780px;
+        left: 815px; 
+        transform: translate(-50%, -50%); /* 요소를 정확히 가운데로 이동 */
+        }
+        .box4 div {
+        color: white; 
+        font-weight: bold; 
+        position: absolute;
+        top: 795px; 
+        left: 1020px;
+        transform: translate(-50%, -50%); /* 요소를 정확히 가운데로 이동 */
+        }
+        .text-box2 img {
+        position: absolute;
+        top: 30px;
+        left: 160px;
+        width: 150px; 
+        height: auto; 
+        }
+        .text-box1 div {
+        font-size: 26px;
+        position: relative; /* 위치 설정을 위해 position을 상대적으로 설정 */
+        top: -10px; 
+        left: -60px;
+        }
+        .text-box1 div:first-child {
+        color: rgb(27, 132, 102);
+        margin-bottom: 15px; 
+        }
+        .gps i {
+        
+        margin-left: 120px;
+        }
+        .log {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .log a {
+        padding: 5px;
+        color: grey;
+        text-decoration: none;
+        }
+
+        .log a:hover {
+        text-decoration: underline;
+        }
+
+        .log a:nth-child(1) { 
+        margin-left: 230px; 
+        }
+
+        .log a:nth-child(2) { /* 회원가입 링크에 대한 선택자 */
+        margin-right: 170px; 
+        }
+       
+        .header-box2 img {
+        width: 50px; 
+        height: auto; 
+        position:absolute;
+        top: 155px; 
+        left: 400px; 
+        display:flex;
+        text-decoration:none;
+        }
+
+        .header-box2 a {
+            text-decoration:none;
+            }
+      
+        .gps-text {
+        font-weight: bold; 
+        font-size: 17px;
+        margin-left: 150px; 
+        }
+        .gps img {
+        width: 50px; 
+        height: auto; /* 이미지의 원래 가로세로 비율을 유지하도록 설정 */       
+        margin-left: 100px; 
+        position:absolute;
+        z-index:2;
+        top:-10px;
+        display:flex;
+        }
+
+        .inner-box p {
+            font-size: 18px;
+            color: white;
+            text-decoration:none;
+            margin-top: 50px;/* 그림 아래에 일정한 간격으로 위치하도록 조정 */
+            }
+
+        {% load static %}
     </style>
-</head>
-<body>
+
     <header>
         <div class="header-items">
+           
             <div class="gps">
-                <i class="bi bi-recycle">GPS</i>
+                <span class="gps-text">GPS</span>
+                <img src="{% static 'image/gps로고 누끼.png' %}" alt="gps로고">
             </div>
             <div class="log">
                 <a href="{% url 'accounts:login' %}">로그인</a>
                 <a href="{% url 'accounts:signup' %}">회원가입</a>
+              
             </div>
         </div>
         <div class="header-box">
+          
             <div>함께 더하는 미래</div>
             <div>같이 나누는 강서</div>
+            <img src="{% static 'image/홈화면 배너 누끼.png' %}" alt="홈화면 배너 누끼">
         </div>
+        <div class="header-box2">
+            <img src="{% static 'image/강서로고 누끼.png' %}" alt="강서로고">
         </div>
+
+        
     </header>
 
     <container>
@@ -142,8 +361,8 @@
                 </div>
                 <div class="text-box2">
                     <div>빠르고 간편한</div>
-                    <div>민원상담 바로가기</div>
-                    <a href='https://eminwon.gangseo.seoul.kr/'></a>
+                    <div><a href='https://eminwon.gangseo.seoul.kr/'>민원상담 바로가기</a></div>
+                    <img src="{% static 'image/공무원.png' %}" alt="공무원">
                 </div>
             </div>
     
@@ -151,33 +370,28 @@
             <div class="menu">
                 <!-- 두번째 상자 안의 내부 상자 4개 -->
                 <div class="inner-box">
-                    <a href="{% url 'accounts:list'%}" class="box1">
+                    <a href="{% url 'accounts:list' %}" class="box1">
                         <i class="bi bi-megaphone"></i>
-                        <div>강서 소식</div>
+                        <p>강서 소식</p>
                     </a>
                 </div>
                 <div class="inner-box">
-                    <a href="{% url 'accounts:guide'%}" class="box2">
+                    <a href="{% url 'accounts:guide' %}" class="box2">
                         <i class="bi bi-trash"></i>
-                        <div>분리배출 가이드</div>
+                        <p>분리배출 가이드</p>
                     </a>
                 </div>
                 <div class="inner-box">
-                    <a href="{% url 'accounts:trash'%}" class="box3">
+                    <a href="{% url 'accounts:trash' %}" class="box3">
                         <i class="bi bi-calendar-week"></i>
-                        <div>우리동네 쓰레기 버리는 날</div>
+                        <p>쓰레기 수거 정보</p>
                     </a>
                 </div>
                 <div class="inner-box">
-                    <a href="{% url 'accounts:mypage'%}" class="box4">
+                    <a href="{% url 'accounts:mypage' %}" class="box4">
                         <i class="bi bi-person"></i>
-                        <div>마이페이지</div>
+                        <p>마이페이지</p>
                     </a>
-                </div>
-                <div class="inner-box">
-                    <i class="bi bi-telephone"></i>
-                    <div>문의전화</div>
-                    <div>02-2660-6114</div>
                 </div>
             </div>
     
@@ -189,5 +403,4 @@
                     <div>02-2660-6114</div>
             </div> -->
     </container>
-</body>
-</html>
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<form action="{% url 'accounts:create' %}" method="POST">
+  {% csrf_token %}
+  {{ form }}
+  <input type ='submit'>
+  </form>
+  <hr>
+  <a href="{% url 'accounts:list' %}">[back]</a>
+  {% endblock content %}

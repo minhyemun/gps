@@ -18,7 +18,11 @@ urlpatterns = [
     path('mypage', views.mypage, name='mypage'),
     # 강서소식
     path('list/', views.list, name='list'),
-    path('view/', views.view, name='view'), 
-    path('write/', views.write, name='write'), 
-    path('edit/', views.edit, name='edit'),
+    path('detail/<int:pk>/', views.detail, name='detail'),
+    #path('write/', views.write, name='write'), 
+    path('write/', views.create, name='create'),
+    path('save/', views.save, name='save'),
+    path('edit/<int:pk>', views.edit, name="edit"),
+    path('update/<int:pk>', views.update, name="update"),
+    path('delete/<int:pk>', views.delete, name='delete'),
 ]

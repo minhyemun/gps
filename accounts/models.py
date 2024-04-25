@@ -9,8 +9,9 @@ class User(AbstractUser):
 
 class Post(models.Model):
      number = models.AutoField(db_column='번호', primary_key=True)
-     title = models.TextField(db_column='제목')
-     writer = models.CharField(db_column='글쓴이', max_length=10)
+     title = models.CharField(blank=True, db_column='제목', max_length=10)
+     content = models.TextField(blank=True, db_column='내용')
+     writer = models.CharField(blank=True, db_column='글쓴이', max_length=10)
      days = models.DateTimeField(db_column='작성일', auto_now_add=True)
      count = models.IntegerField(db_column='조회', default=0)
 
@@ -18,5 +19,5 @@ class Post(models.Model):
 #         managed = True
 #         db_table = 'post'
 
-#     def __str__(self):
-#         return "제목 : " + self.title + ", 작성자 : " + self.writer
+    #  def __str__(self):
+    #      return self.title

@@ -19,5 +19,5 @@ class Migration(migrations.Migration):
                 ('days', models.DateTimeField(auto_now_add=True, db_column='작성일')),
                 ('count', models.IntegerField(db_column='조회', default=0)),
             ],
-        ),
+        )
     ]

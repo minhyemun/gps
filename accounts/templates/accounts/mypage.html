@@ -1,0 +1,188 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+/* 전반적인 스타일 */
+body {
+    background: rgb(228, 248, 240); /* 배경색 */
+    margin: 0; /* 페이지 마진 제거 */
+    padding: 0; /* 페이지 패딩 제거 */
+}
+nav {
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #8EC4B0;
+}
+nav a {
+    display: inline-block;
+    color: rgb(91, 90, 90);
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    background-color: #E7EEEE;
+    color: rgb(65, 64, 64);
+}
+nav a + a {
+margin-left: 40px; /*메뉴바 사이 간격*/
+}
+.container {
+    max-width: 1200px; /* 최대 너비 */
+    margin: 20px auto; /* 가운데 정렬 */
+    display: flex;
+    justify-content: center;
+}
+/* 박스 스타일 */
+.box {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px;
+}
+.box.left-box {
+    width: 300px;
+}
+.box.right-box {
+    flex-grow: 1; /* 오른쪽 박스가 남은 공간을 모두 차지하도록 */
+    margin-left: 20px; /* 왼쪽 여백 */
+}
+/* 프로필 컨테이너 */
+.profile-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.profile-container img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* 원형 이미지 */
+    margin-right: 20px;
+}
+.profile-info {
+    font-size: 24px;
+    font-weight: bold;
+}
+/* 주소, 계정 정보 등의 목록 스타일 */
+.info-list {
+    margin-top: 33px;
+}
+.info-item {
+    margin-bottom: 10px;
+}
+.info-item a {
+    display: block;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333333;
+    transition: background-color 0.3s ease;
+}
+.info-item a:hover {
+    background-color: #eeeeee;
+}
+/* 활동 목록 */
+.activity-list {
+    margin-top: 20px;
+}
+.activity-item {
+    margin-bottom: 10px;
+}
+.activity-item a {
+    display: block;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333333;
+    transition: background-color 0.3s ease;
+}
+.activity-item a:hover {
+    background-color: #eeeeee;
+}
+</style>
+{% load static %}
+
+    <nav>
+        <a href="{% url 'accounts:home' %}">메인화면</a>
+        <a href="{% url 'accounts:list' %}">강서소식</a>
+        <a href="{% url 'accounts:guide' %}">분리배출 가이드</a>
+        <a href="{% url 'accounts:trash' %}">쓰레기 수거 정보</a>
+        <a href="{% url 'accounts:mypage' %}">마이페이지</a>
+    </nav>
+</div>
+
+<!-- 내용 -->
+<div class="container">
+    <!-- 왼쪽 박스 -->
+    <div class="box left-box">
+        <div class="profile-container">
+            <!-- Font Awesome 아이콘 추가 -->
+            
+            <img src="{% static './image/보노.png' %}" alt="프로필사진">
+            <div class="profile-info">홍길동님</div>
+        </div>
+        <!-- 주소 -->
+        <div class="info-list">
+            <div class="info-item"><i class="fas fa-map-marker-alt"></i> 서울특별시 강서구 화곡1동</div>
+        </div>
+        <!-- 계정 정보 -->
+        <div class="info-list">
+            <div class="info-item"><a href="#"><i class="fas fa-user-cog"></i> 계정 정보</a></div>
+        </div>
+        <!-- 로그아웃 -->
+        <div class="info-list">
+            <div class="info-item"><a href="{% url 'accounts:login' %}"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></div>
+        </div>
+        <!-- 회원정보 수정 -->
+        <div class="info-list">
+            {% comment %} <div class="info-item"><a href="{% url 'edit_profile' %}"><i class="fas fa-user-edit"></i> 회원 정보 수정</a></div> {% endcomment %}
+        </div>
+        <!-- 회원 탈퇴 -->
+        <div class="info-list">
+            {% comment %} <div class="info-item"><a href="{% url 'delete_account' %}"><i class="fas fa-user-times"></i> 회원 탈퇴</a></div> {% endcomment %}
+        </div>
+    </div>
+    <!-- 오른쪽 박스 -->
+    <div class="box right-box">
+        <!-- 강서 공지글 -->
+        <div class="activity-list">
+            <h2><i class="fas fa-bullhorn"></i> 내가 저장한 강서 소식</h2>
+            <div class="activity-item">
+                {% comment %} <a href="{% url 'accounts:view' %}"><i class="fas fa-newspaper"></i> 게시글1</a> {% endcomment %}
+                <a><i class="fas fa-newspaper"></i> 게시글1</a>
+            </div>
+            <div class="activity-item">
+                {% comment %} <a href="{% url 'accounts:view'%}"><i class="fas fa-newspaper"></i> 게시글2</a> {% endcomment %}
+                <a><i class="fas fa-newspaper"></i> 게시글2</a>
+            </div>
+        </div>
+        <!-- 분리배출 가이드 -->
+        <div class="activity-list">
+            <h2><i class="fas fa-recycle"></i> 저장한 분리배출 가이드</h2>
+            <div class="activity-item">
+                {% comment %} <a href="{% url 'pineapple_guide'%}"><i class="fas fa-lemon"></i> 파인애플 껍질</a> {% endcomment %}
+                <a><i class="fas fa-lemon"></i> 파인애플 껍질</a>
+            </div>
+            <div class="activity-item">
+                {% comment %} <a href="{% url 'broken_glass_guide'%}"><i class="fas fa-glass-whiskey"></i> 깨진유리병</a> {% endcomment %}
+                <a><i class="fas fa-glass-whiskey"></i> 깨진유리병</a>
+            </div>
+            <div class="activity-item">
+                {% comment %} <a href="{% url 'battery_guide'%}"><i class="fas fa-battery-full"></i> 건전지</a> {% endcomment %}
+                <a><i class="fas fa-battery-full"></i> 건전지</a>
+            </div>
+            <div class="activity-item">
+                {% comment %} <a href="{% url 'chopping_board_guide' %}"><i class="fas fa-cut"></i> 도마</a> {% endcomment %}
+                <a><i class="fas fa-cut"></i> 도마</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

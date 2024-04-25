@@ -1,0 +1,171 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+  <title>분리배출 가이드</title>
+  <!-- Bootstrap Icons CDN 추가 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background-color: rgb(228, 248, 240); 
+      margin:auto;
+    }
+
+    nav {
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+        background-color: #8EC4B0;
+    }
+    nav a {
+        display: inline-block;
+        color: rgb(91, 90, 90);
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    nav a:hover {
+        background-color: #E7EEEE;
+        color: rgb(65, 64, 64);
+    }
+    nav a + a {
+    margin-left: 40px; /*메뉴바 사이 간격*/
+    }
+    .container {
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    .container2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    h1 {
+      color: black;
+      font-size: 25px;
+      margin-top:5%;
+    }
+    table {
+      width: 80%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+      }
+    th,td {
+      padding: 8px;
+      }
+    th {
+      background-color: #F2F2F2;
+      }
+    td {
+      background-color:white;
+    }
+</style>
+</head>
+  <nav>
+    <a href="{% url 'accounts:home'%}">메인화면</a>
+    <a href="{% url 'accounts:list'%}">강서소식</a>
+    <a href="{% url 'accounts:guide'%}">분리배출 가이드</a>
+    <a href="{% url 'accounts:trash'%}">쓰레기 수거 정보</a>
+    <a href="{% url 'accounts:mypage'%}">마이페이지</a>
+  </nav>
+<body>
+  <div class="container2">
+  <h1>분리배출 가이드</h1>
+  
+  <table>
+    <tr>
+      <th>품목</th>
+      <th>세부품목</th>
+      <th>배출방법</th>
+    </tr>
+    <tr>
+      <td rowspan="3"><i class="fa-solid fa-scroll"></i> 종이류</td>
+      <td>종이팩</td>
+      <td>
+        <a>- 내용물을 비우고 물로 헹궈 배출</a>
+        <br>
+        <a>- 종이와 다른 재질은 분리해 배출</a>
+        <br>
+        <a>- 예시:우유팩,두유팩,소주팩 등</a>
+      </td>
+    </tr>
+    <tr>
+      <td>신문지</td>
+        <td>
+          <a>- 물기에 젖지않게 조심</a>
+          <br>
+          <a>- 비닐 코팅된 광고 혹은 기타 오물 혼합금지</a>
+        </td>
+     </tr>
+     <tr>
+      <td>기타종이</td>
+        <td>
+          <a>- 물기에 젖지않게 조심</a>
+          <br>
+          <a>- 반듯하게 펴서 묶어서 배출</a>
+        </td>
+     </tr>
+
+     <tr>
+      <td rowspan="1"><i class="fa-solid fa-wine-glass"></i> 유리병류</td>
+      <td>음료/기타 병</td>
+      <td>
+        <a>- 담배꽁초 등 이물질 분리</a>
+        <br>
+        <a>- 소주병 등 빈용기보증금 대상은 소매점 등 반납</a>
+        <br>
+        <a>- 상표 제거 가능한경우 제거 후 배출</a>
+      </td>
+      </tr>
+
+     <tr>
+      <td rowspan="2"><i class="bi bi-trash2-fill"></i> 금속캔</td>
+      <td>음료캔</td>
+      <td>
+        <a>- 내용물을 헹궈 배출</a>
+        <br>
+        <a>- 플라스틱 뚜껑 등은 제거해 배출</a>
+      </td>
+      </tr>
+      <tr>
+      <td>기타캔(부탄가스 등)</td>
+        <td>
+          <a>- 내용물 완전히 제거해 배출</a>
+          <br>
+          <a>- 내용물 남은 캔은 특수규격마대로 배출</a>
+        </td>
+     </tr>
+
+     <tr>
+      <td rowspan="1"><i class="fa-solid fa-sheet-plastic"></i> 비닐류</td>
+      <td>합성수지 비닐포장재</td>
+      <td>
+        <a>- 내용물을 헹궈 배출</a>
+        <br>
+        <a>- 흩날리지 않도록 투명하거나 반투명 봉투에 담아배출</a>
+      </td>
+      </tr>
+
+     <tr>
+      <td rowspan="2"><i class="fa-solid fa-shirt"></i> 의류</td>
+      <td>면/기타</td>
+      <td rowspan="2">
+        <a>- 폐의류 수거함에 배출</a>
+      </td>
+      </tr>
+      <tr>
+      <td>동식물 및 합성섬유</td>
+   
+     </tr>
+ 
+  </table>
+</div>
+</body>
+</html>
+{% endblock content %}

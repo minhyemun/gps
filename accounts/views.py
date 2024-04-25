@@ -5,6 +5,9 @@ from django.contrib.auth import logout as auth_logout
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth import update_session_auth_hash
 
+# 강서소식
+from .models import Post
+
 # Create your views here.
 def home(request):
     return render(request, 'accounts/home.html')
@@ -22,7 +25,7 @@ def login(request):
             #login(request, form.get_user())
 
            auth_login(request, form.get_user())
-           return redirect('accounts:index')
+           return redirect('accounts:home')
     else:
         form = AuthenticationForm()
     context={
@@ -104,18 +107,98 @@ def change_password(request, user_id):
 
 # 강서 소식
 def list(request):
-    #rslist = Post.objects.all()
-    #return render(request, "accounts/list.html", {'rslist':rslist})
-    return render(request,'accounts/list.html')
+    account_list = Post.objects.all()
+    context = {
+        'account_list':account_list
+    }
+    return render(request, "accounts/list.html", context)
+    #return render(request,'accounts/list.html')
 
-def view(request):
-    return render(request, 'accounts/view.html')
+def detail(request, pk):
+    accountt = Post.objects.get(pk=pk)
+    context = {
+        'accountt':accountt
+    }
+    return render(request, 'accounts/detail.html', context)
 
-def write(request):
-    return render(request,'accounts/write.html')
+#def write(request):
+#    return render(request,'accounts/write.html')
+from .forms import PostForm
+from .forms import PostForm2
 
-def edit(request):
-    return render(request,'accounts/edit.html')
+def create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            return redirect('accounts:detail', post.pk)
+        else:
+            print(form.errors)
+    else:
+        form = PostForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/write.html', context)
+
+# def edit(request, pk):
+#      accountt = PostForm2.objects.get(pk=pk)
+#      context = {
+#          'accountt':accountt
+#      }
+#      return render(request, 'accounts/edit.html', context)
+
+
+# def create(request):
+#     if request.method == 'POST':
+#         form = Post(request.POST)
+#         if form.is_valid():
+#             accountt=form.save()
+#             return redirect('accounts:detail', accountt.pk)
+#     else: form = Post()
+#     context={
+#             'form':form
+#         }
+#     return render(request,'accounts/write.html',context)
+
+def save(request):
+    if request.method == "POST":
+        new_post = Post.objects.create(
+            title=request.POST.get('title'),
+            content=request.POST.get('content'),
+            writer=request.POST.get('writer'),
+            # days 필드는 auto_now_add=True로 설정되어 있으므로 지정할 필요 없음
+        )
+        return redirect('accounts:detail', pk=new_post.pk)
+    return render(request, 'accounts/save.html')  # POST가 아닐 때 어떤 행동을 할지 명시
+
+def edit(request,pk):
+    if request.method == 'POST':
+        form = PostForm2(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:detail',pk)
+    else:
+        form = PostForm2()
+    context={
+        'form':form
+    }
+    return render(request,'accounts/edit.html',context)
+
+def delete(request, pk):
+    data = request.POST
+    delete_post = Post.objects.filter(pk=pk).delete()
+    return redirect('accounts:list')
+
+# 조회수 증가
+from django.shortcuts import get_object_or_404
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.count += 1 
+    post.save()
+    return render(request, 'accounts/post_detail.html', {'post': post})
+
 
 # 분리배출 가이드
 def guide(request):
@@ -128,3 +211,8 @@ def trash(request):
 # 마이페이지
 def mypage(request):
     return render(request, 'accounts/mypage.html')
+
+
+
+from .models import Post
+print(Post.objects.values('writer', 'days', 'count'))
